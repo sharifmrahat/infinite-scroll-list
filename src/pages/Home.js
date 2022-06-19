@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
+import SkeletonLoader from "../components/SkeletonLoader";
 import UserCard from "../components/UserCard";
 
 const Home = ({ setUser }) => {
@@ -30,36 +31,37 @@ const Home = ({ setUser }) => {
 
   return (
     <>
-      <section className="mb-10 sticky top-0">
+      <section className="mb-10 sticky top-0 z-50">
         <Header handleLogout={handleLogout}></Header>
       </section>
-
-      <h1 className="text-center mb-10 text-lg lg:text-xl text-slate-800 font-bold">
+      <h1 className="text-center mb-10 text-lg lg:text-xl text-slate-800 font-bold w-fit mx-auto">
         Random User Infinite Scroll
       </h1>
-      <section className="border border-blue-700 lg:w-fit mx-4 lg:mx-auto shadow-lg rounded-md">
-        <InfiniteScroll
-          dataLength={randomUsers?.length}
-          next={fetchMoreData}
-          hasMore={randomUsers?.length !== totalResults}
-          loader={
-            <>
-              <Loader />
-            </>
-          }
-        >
-          <div className="w-fit mx-auto px-6">
-            {!randomUsers ? (
-              <Loader></Loader>
-            ) : (
+      <section>
+        <div className="border border-blue-700 w-fit mx-auto shadow-lg rounded-md">
+          <InfiniteScroll
+            dataLength={randomUsers?.length}
+            next={fetchMoreData}
+            hasMore={randomUsers?.length !== totalResults}
+            loader={
               <>
-                {randomUsers.map((randomUser, index) => (
-                  <UserCard key={index} randomUser={randomUser}></UserCard>
-                ))}
+                <SkeletonLoader />
               </>
-            )}
-          </div>
-        </InfiniteScroll>
+            }
+          >
+            <div className="w-fit mx-auto px-5">
+              {!randomUsers?.length ? (
+                <Loader></Loader>
+              ) : (
+                <>
+                  {randomUsers.map((randomUser, index) => (
+                    <UserCard key={index} randomUser={randomUser}></UserCard>
+                  ))}
+                </>
+              )}
+            </div>
+          </InfiniteScroll>
+        </div>
       </section>
     </>
   );
