@@ -1,6 +1,9 @@
 import React from "react";
+import useData from "../hooks/useData";
+import UserCard from "../components/UserCard";
 
 const Home = ({ user, setUser }) => {
+  const [randomUsers] = useData();
   const userData = JSON.parse(localStorage.getItem("userData"));
 
   const handleLogout = () => {
@@ -19,6 +22,15 @@ const Home = ({ user, setUser }) => {
       >
         LoginOut
       </button>
+      <div className="my-20">
+        {!randomUsers ? (
+          <p>Loading..</p>
+        ) : (
+          randomUsers.map((randomUser) => (
+            <UserCard randomUser={randomUser}></UserCard>
+          ))
+        )}
+      </div>
     </div>
   );
 };
