@@ -30,7 +30,7 @@ const Home = ({ setUser }) => {
 
   return (
     <>
-      <section className="mb-10">
+      <section className="mb-10 sticky top-0">
         <Header handleLogout={handleLogout}></Header>
       </section>
 
