@@ -16,8 +16,11 @@ const Login = ({ user, setUser }) => {
     const username = e.target.username.value;
     const password = e.target.password.value;
 
-    if (username !== "foo" && password !== "bar") {
-      setError("Invalid username & password");
+    if (username !== "foo") {
+      setError("Invalid username");
+      return;
+    } else if (password !== "bar") {
+      setError("Invalid password");
       return;
     }
     setUser(true);
@@ -47,7 +50,7 @@ const Login = ({ user, setUser }) => {
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="johndoe123"
-                required=""
+                required
               />
             </div>
             <div>
@@ -63,7 +66,7 @@ const Login = ({ user, setUser }) => {
                 id="password"
                 placeholder="••••••••"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                required=""
+                required
               />
             </div>
             <div className="flex items-start">
