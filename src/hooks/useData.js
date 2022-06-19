@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useData = () => {
   const [randomUsers, setRandomUsers] = useState([]);
-  const url = "https://randomuser.me/api/?results=500";
+  const url = "https://randomuser.me/api/?results=50";
 
   useEffect(() => {
     fetch(url)

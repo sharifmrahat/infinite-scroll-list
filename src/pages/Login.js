@@ -27,46 +27,72 @@ const Login = ({ user, setUser }) => {
 
   return (
     <>
-      <div className="p-4 border border-orange-600 shadow-xl w-fit mx-auto rounded my-10">
-        <div>
-          <p className="text-lg lg:text-xl text-red-600 mb-5">{error}</p>
-        </div>
-        <form onSubmit={handleLogin}>
-          <div className="text-left flex flex-col gap-4 justify-center items-center px-2 md:px-6 text-lg">
+      <div className="my-10 mx-10">
+        <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 w-fit mx-auto">
+          <form onSubmit={handleLogin} className="space-y-6" action="#">
+            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              Sign in to our platform
+            </h5>
+            <p className="my-4 text-red-700 text-sm lg:text-md">{error}</p>
             <div>
-              <label htmlFor="username">Email:</label>
-              <p>
-                <input
-                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
-                  type="text"
-                  name="username"
-                  id="username"
-                  required
-                />
-              </p>
-            </div>
-            <div>
-              <label htmlFor="user-password">Password:</label>
-              <p>
-                <input
-                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
-                  type="password"
-                  name="password"
-                  id="user-password"
-                  required
-                />
-              </p>
-            </div>
-            <div>
-              <button
-                className="bg-green-800 hover:bg-orange-600 text-white px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
-                type="submit"
+              <label
+                htmlFor="username"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                Login
-              </button>
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="johndoe123"
+                required=""
+              />
             </div>
-          </div>
-        </form>
+            <div>
+              <label
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required=""
+              />
+            </div>
+            <div className="flex items-start">
+              <div className="flex items-start">
+                <div className="flex items-center h-5">
+                  <input
+                    id="remember"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                    required=""
+                  />
+                </div>
+                <label
+                  htmlFor="remember"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Remember me
+                </label>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );
