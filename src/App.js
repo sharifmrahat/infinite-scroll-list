@@ -9,7 +9,7 @@ function App() {
   const [user, setUser] = useState(false);
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
-    setUser(userData.login);
+    setUser(userData?.login || false);
   }, [user]);
 
   return (
